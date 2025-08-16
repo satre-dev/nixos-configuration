@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/sway.nix
+    ./modules/waybar.nix
     ./modules/networking.nix
     ./modules/fonts.nix
     ./modules/development.nix
