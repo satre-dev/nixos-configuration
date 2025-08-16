@@ -14,7 +14,7 @@
       grim
       slurp
       wf-recorder
-    ];
+   ];
     
     extraSessionCommands = ''
       export SDL_VIDEODRIVER=wayland
@@ -24,6 +24,60 @@
       export MOZ_ENABLE_WAYLAND=1
     '';
   };
+
+  # Add desktop portals
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+
+
+  # Waybar configuration
+  environment.etc."xdg/waybar/config".text = builtins.toJSON {
+    layer = "top";
+    position = "top";
+    height = 30;
+    spacing = 4;
+    
+    modules-left = [ "sway/workspaces" ];
+    modules-center = [ ];
+    modules-right = [ "cpu" "memory" "network" "battery" "clock" ];
+    
+    "sway/workspaces" = {
+      disable-scroll = true;
+      format = "{index}";
+    };
+    
+    cpu = {
+      format = "CPU {usage}%";
+      interval = 2;
+    };
+    
+    memory = {
+      format = "MEM {percentage}%";
+      interval = 2;
+    };
+    
+    network = {
+      format-wifi = "WiFi {signalStrength}%";
+      format-ethernet = "ETH Connected";
+      format-disconnected = "No Network";
+    };
+    
+    battery = {
+      format = "BAT {capacity}%";
+      format-charging = "BAT {capacity}% (charging)";
+    };
+    
+    clock = {
+      format = "{:%H:%M %Y-%m-%d}";
+    };
+  };
+
 
   # Sway configuration
   environment.etc."sway/config".text = ''
@@ -107,7 +161,6 @@
     bindsym $mod+Shift+0 move container to workspace number 10
 
     # Layout
-    bindsym $mod+h splith
     bindsym $mod+v splitv
     bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
@@ -144,12 +197,11 @@
     
     # Status Bar
     bar {
-        position top
-        status_command waybar
-        tray {
-            icon_theme adwaita
-        }
+	mode invisible
     }
+    
+    # Start waybar
+    exec_always --no-startup-id pkill waybar; sleep 1 && waybar
     
     # Colors (Gruvbox inspired)
     client.focused 		#689d6a #689d6a #282828 #689d6a  #689d6a

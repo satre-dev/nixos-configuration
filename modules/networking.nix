@@ -23,6 +23,20 @@
     wgnord
     wireguard-tools
   ];
-
-
+  
+  security.sudo.extraRules = [
+    {
+      users = [ "satre" ];
+      commands = [
+        {
+          command = "${pkgs.wgnord}/bin/wgnord";
+          options = [ "NOPASSWD" ];
+        }
+        {
+          command = "/run/current-system/sw/bin/wgnord";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 }

@@ -10,6 +10,7 @@
     dotnet-sdk
     git
     github-cli
+    neofetch # absolutely necessary
     
     # Editors
     vim
