@@ -5,6 +5,7 @@
     # Development tools
     go
     rustc
+    gcc15
     cargo
     dotnet-sdk
     git
