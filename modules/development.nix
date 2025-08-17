@@ -16,7 +16,6 @@
 
     # Editors
     vim
-    neovim
     emacs
 
     # Utils
@@ -36,7 +35,7 @@
       config = {
         init.defaultBranch = "main";
         pull.rebase = true;
-        commit.gpgsign = true;  # Fixed typo
+        commit.gpgsign = true;
         gpg.program = "${pkgs.gnupg}/bin/gpg";
       };
     };
