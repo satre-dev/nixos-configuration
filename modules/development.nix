@@ -11,16 +11,20 @@
     git
     github-cli
     neofetch # absolutely necessary
-    
+    nodejs
+
     # Editors
     vim
     neovim
     emacs
+
+    # Utils
+    unzip
   ];
 
   programs = {
     bash.completion.enable = true;
-    
+
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

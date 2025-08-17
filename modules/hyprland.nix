@@ -17,11 +17,14 @@
     waybar          # Status bar
     wofi            # App launcher
     kitty           # Terminal
+    alacritty       # Terminal 2
     mako            # Notifications
     wl-clipboard    # Clipboard
     grim            # Screenshots
     slurp           # Screen selection
     brightnessctl   # Brightness control
+    swww            # Wallpaper daemon
+    libnotify       # Notifications
   ];
 
   # Enable services
