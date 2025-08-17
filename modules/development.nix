@@ -10,8 +10,9 @@
     dotnet-sdk
     git
     github-cli
-    neofetch # absolutely necessary
+    fastfetch # absolutely necessary
     nodejs
+    zsh
 
     # Editors
     vim

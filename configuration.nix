@@ -8,6 +8,7 @@
     ./modules/fonts.nix
     ./modules/development.nix
     ./modules/audio.nix
+    ./modules/social.nix
     ./users/satre.nix
   ];
 
