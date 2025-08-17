@@ -3,8 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/sway.nix
-    ./modules/waybar.nix
+    ./modules/hyprland.nix
     ./modules/networking.nix
     ./modules/fonts.nix
     ./modules/development.nix
@@ -42,6 +41,14 @@
     layout = "us";
     variant = "";
   };
+
+  security.rtkit.enable = true;
+
+  # Ensure D-Bus is properly configured
+  services.dbus.enable = true;
+
+  # Add GNOME keyring (often needed for GTK portal)
+  services.gnome.gnome-keyring.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
